@@ -11,12 +11,12 @@ describe('Turn', function() {
     expect(Turn).to.be.a('function');
   });
 
-  it.skip('should be an instance of Turn', function() {
+  it('should be an instance of Turn', function() {
     const turn = new Turn();
     expect(turn).to.be.an.instanceof(Turn);
   });
 
-  it.skip('should store a guess', function() {
+  it('should store a guess', function() {
     const turn = new Turn('object');
     expect(turn.guess).to.equal('object');
   });
