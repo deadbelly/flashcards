@@ -27,7 +27,7 @@ describe('Turn', function() {
     expect(turn.card).to.be.an.instanceof(Card);
   });
 
-  it.skip('should be able to return the guess', function() {
+  it('should be able to return the guess', function() {
     const card = new Card(1, 'What allows you to define a set of related information using key-value pairs?', ['object', 'array', 'function'], 'object');
     const turn = new Turn('object', card);
     expect(turn.returnGuess()).to.equal('object');
