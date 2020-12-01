@@ -4,54 +4,54 @@ const expect = chai.expect;
 const Turn = require('../src/Turn');
 const Card = require('../src/Card');
 
-describe('Turn', function() {
+describe('Turn', () => {
+  let card
+  let turn1
+  let turn2
 
-  it('should be a function', function() {
-    const turn = new Turn();
+  beforeEach(() => {
+    card = new Card(1, 'What allows you to define a set of related information using key-value pairs?', ['object', 'array', 'function'], 'object');
+    turn1 = new Turn('object', card);
+    turn2 = new Turn('array', card);
+  });
+
+  it('should be a function', () => {
     expect(Turn).to.be.a('function');
   });
 
-  it('should be an instance of Turn', function() {
-    const turn = new Turn();
-    expect(turn).to.be.an.instanceof(Turn);
+  it('should be an instance of Turn', () => {
+    expect(turn1).to.be.an.instanceof(Turn);
   });
 
-  it('should store a guess', function() {
-    const turn = new Turn('object');
-    expect(turn.guess).to.equal('object');
+  it('should store a guess', () => {
+    expect(turn1.guess).to.equal('object');
   });
 
-  it('should store a card', function() {
-    const card = new Card(1, 'What allows you to define a set of related information using key-value pairs?', ['object', 'array', 'function'], 'object');
-    const turn = new Turn('object', card);
-    expect(turn.card).to.be.an.instanceof(Card);
+  it('should store a card', () => {
+    expect(turn1.card).to.be.an.instanceof(Card);
   });
 
-  it('should be able to return the guess', function() {
-    const card = new Card(1, 'What allows you to define a set of related information using key-value pairs?', ['object', 'array', 'function'], 'object');
-    const turn = new Turn('object', card);
-    expect(turn.returnGuess()).to.equal('object');
+  it('should be able to return the guess', () => {
+    expect(turn1.returnGuess()).to.equal('object');
   });
 
-  it('should be able to return the card', function() {
-    const card = new Card(1, 'What allows you to define a set of related information using key-value pairs?', ['object', 'array', 'function'], 'object');
-    const turn = new Turn('object', card);
-    expect(turn.returnCard()).to.equal(card);
+  it('should be able to return the card', () => {
+    expect(turn1.returnCard()).to.equal(card);
   });
 
-  it('should be able to evaluate the guess', function() {
-    const card = new Card(1, 'What allows you to define a set of related information using key-value pairs?', ['object', 'array', 'function'], 'object');
-    const turn1 = new Turn('object', card);
-    const turn2 = new Turn('array', card);
+  it('should be able to evaluate a correct guess', () => {
     expect(turn1.evaluateGuess()).to.equal(true);
+  });
+
+  it('should be able to evaluate an incorrect guess', () => {
     expect(turn2.evaluateGuess()).to.equal(false);
   });
 
-  it('should be able to give feedback', function() {
-    const card = new Card(1, 'What allows you to define a set of related information using key-value pairs?', ['object', 'array', 'function'], 'object');
-    const turn1 = new Turn('object', card);
-    const turn2 = new Turn('array', card);
+  it('should be able to give feedback for a correct guess', () => {
     expect(turn1.giveFeedback()).to.equal('correct!');
+  });
+
+  it('should be able to give feedback for an incorrect guess', () => {
     expect(turn2.giveFeedback()).to.equal('incorrect!');
   });
 });
