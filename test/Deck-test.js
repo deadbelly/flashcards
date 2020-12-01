@@ -12,8 +12,8 @@ describe('Deck', function() {
   });
 
   it('should be an instance of Deck', function() {
-    const turn = new Deck();
-    expect(turn).to.be.an.instanceof(Deck);
+    const deck = new Deck();
+    expect(deck).to.be.an.instanceof(Deck);
   });
 
   it('should store cards', function() {
