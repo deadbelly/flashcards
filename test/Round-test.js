@@ -18,7 +18,7 @@ describe('Round', () => {
   card3 = new Card(3, 'What type of prototype method does not modify the existing array but returns a particular representation of the array?', ['mutator method', 'accessor method', 'iteration method'], 'mutator method');
   deck = new Deck([card1, card2, card3]);
   round = new Round(deck);
-});
+  });
 
   it('should be a function', () => {
     expect(Round).to.be.a('function');
@@ -42,7 +42,15 @@ describe('Round', () => {
 
   it('should be able to take turns', () => {
     expect(round.takeTurn('object')).to.equal('correct!');
+  });
+
+  it('should be able to take turns when guesses are incorrect', () => {
     expect(round.takeTurn('function')).to.equal('incorrect!');
+  });
+
+  it('should keep track of the number of turns', () => {
+    round.takeTurn('object');
+    round.takeTurn('function');
     expect(round.turns).to.equal(2);
   });
 
