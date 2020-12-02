@@ -12,7 +12,7 @@ class Round {
   takeTurn(guess) {
     const turn = new Turn(guess, this.deck.cards.shift())
     this.turns++
-    if (!turn.evaluateGuess()){
+    if (!turn.evaluateGuess()) {
       this.incorrectGuesses.push(turn.card.id)
     }
     return turn.giveFeedback()
