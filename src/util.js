@@ -37,8 +37,9 @@ async function main(round) {
 
     if(!round.returnCurrentCard()) {
       round.endRound();
-      if (round.incorrectGuesses > 0) {
-        console.log(round.incorrectGuesses)
+      if (round.incorrectGuesses.length > 0) {
+        round.convertToReview()
+        main(round)
       }
     } else {
       main(round);
