@@ -66,4 +66,8 @@ describe('Round', () => {
     round.takeTurn('function');
     expect(round.calculatePercentCorrect()).to.equal(50);
   });
+
+  it('should be able to convert to a review round', () => {
+    expect(round).to.respondTo('convertToReview')
+  })
 });
