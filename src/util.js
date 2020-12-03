@@ -2,7 +2,7 @@ const inquirer = require('inquirer');
 
 const genList = (round) => {
   let card = round.returnCurrentCard();
-  
+
   let choices = card.answers.map((answer, index) => {
     return {
       key: index,
@@ -37,6 +37,9 @@ async function main(round) {
 
     if(!round.returnCurrentCard()) {
       round.endRound();
+      if (round.incorrectGuesses > 0) {
+        console.log(round.incorrectGuesses)
+      }
     } else {
       main(round);
     }

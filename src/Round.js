@@ -6,9 +6,11 @@ class Round {
     this.turns = 0
     this.incorrectGuesses = []
   }
+  
   returnCurrentCard() {
     return this.deck.cards[0]
   }
+
   takeTurn(guess) {
     const turn = new Turn(guess, this.deck.cards.shift())
     this.turns++
@@ -17,9 +19,11 @@ class Round {
     }
     return turn.giveFeedback()
   }
+
   calculatePercentCorrect() {
-    return 100 * (this.incorrectGuesses.length / this.turns)
+    return 100 - (100 * (this.incorrectGuesses.length / this.turns))
   }
+
   endRound() {
     console.log(`** Round over! ** You answered ${this.calculatePercentCorrect()}% of the questions correctly!`)
   }
