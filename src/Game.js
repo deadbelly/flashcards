@@ -19,13 +19,18 @@ class Game {
     util.main(round)
   }
 
-  start() {
+  setUp() {
     const cards = []
-    prototypeQuestions.forEach((card) => cards.push(new Card(card.id, card.question, card.answers, card.correctAnswer)))
-
+    prototypeQuestions.forEach((card) => {
+      cards.push(new Card(card.id, card.question, card.answers, card.correctAnswer))
+    })
     const deck = new Deck(cards)
     this.currentRound = new Round(deck)
-    this.printMessage(deck, this.currentRound)
+  }
+
+  start() {
+    this.setUp()
+    this.printMessage(this.currentRound.deck, this.currentRound)
     this.printQuestion(this.currentRound)
   }
 }
