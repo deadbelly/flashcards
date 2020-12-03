@@ -58,7 +58,7 @@ describe('Round', () => {
     round.takeTurn('object');
     round.takeTurn('function');
     round.takeTurn('accessor method');
-    expect(round.incorrectGuesses).to.eql([2, 3]);
+    expect(round.incorrectGuesses).to.eql([card2, card3]);
   });
 
   it('should be able to calculate the win percentage', () => {
@@ -66,4 +66,8 @@ describe('Round', () => {
     round.takeTurn('function');
     expect(round.calculatePercentCorrect()).to.equal(50);
   });
+
+  it('should be able to convert to a review round', () => {
+    expect(round).to.respondTo('convertToReview')
+  })
 });
