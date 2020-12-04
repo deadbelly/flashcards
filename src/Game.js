@@ -22,7 +22,8 @@ class Game {
   setUp() {
     const cards = []
     prototypeQuestions.forEach((card) => {
-      cards.push(new Card(card.id, card.question, card.answers, card.correctAnswer))
+      const newCard = new Card(card.id, card.question, card.answers, card.correctAnswer)
+      cards.push(newCard)
     })
     const deck = new Deck(cards)
     this.currentRound = new Round(deck)
