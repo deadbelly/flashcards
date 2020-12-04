@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 const chai = require('chai');
 const expect = chai.expect;
 
@@ -10,9 +11,9 @@ describe('Turn', () => {
   let turn2
 
   beforeEach(() => {
-    card = new Card(1, 'What allows you to define a set of related information using key-value pairs?', ['object', 'array', 'function'], 'object');
-    turn1 = new Turn('object', card);
-    turn2 = new Turn('array', card);
+    card = new Card(1, 'What is my favorite color?', ['green', 'orange', 'blue'], 'green');
+    turn1 = new Turn('green', card);
+    turn2 = new Turn('blue', card);
   });
 
   it('should be a function', () => {
@@ -24,7 +25,7 @@ describe('Turn', () => {
   });
 
   it('should store a guess', () => {
-    expect(turn1.guess).to.equal('object');
+    expect(turn1.guess).to.equal('green');
   });
 
   it('should store a card', () => {
@@ -32,7 +33,7 @@ describe('Turn', () => {
   });
 
   it('should be able to return the guess', () => {
-    expect(turn1.returnGuess()).to.equal('object');
+    expect(turn1.returnGuess()).to.equal('green');
   });
 
   it('should be able to return the card', () => {

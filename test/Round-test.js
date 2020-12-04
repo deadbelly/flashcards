@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 const chai = require('chai');
 const expect = chai.expect;
 
@@ -13,9 +14,9 @@ describe('Round', () => {
   let round
 
   beforeEach(() => {
-    card1 = new Card(1, 'What allows you to define a set of related information using key-value pairs?', ['object', 'array', 'function'], 'object');
-    card2 = new Card(2, 'What is a comma-separated list of related values?', ['array', 'object', 'function'], 'array');
-    card3 = new Card(3, 'What type of prototype method does not modify the existing array but returns a particular representation of the array?', ['mutator method', 'accessor method', 'iteration method'], 'mutator method');
+    card1 = new Card(1, 'What is my favorite color?', ['green', 'orange', 'blue'], 'green');
+    card2 = new Card(2, 'What is my dogs name', ['danny', 'jake', 'rose'], 'danny');
+    card3 = new Card(3, 'What is my cats name', ['You dont have a cat', 'Goose', 'Spork'], 'You dont have a cat');
     deck = new Deck([card1, card2, card3]);
     round = new Round(deck);
   });
@@ -41,7 +42,7 @@ describe('Round', () => {
   });
 
   it('should be able to take turns', () => {
-    expect(round.takeTurn('object')).to.equal('correct!');
+    expect(round.takeTurn('green')).to.equal('correct!');
   });
 
   it('should be able to take turns when guesses are incorrect', () => {
@@ -49,25 +50,25 @@ describe('Round', () => {
   });
 
   it('should keep track of the number of turns', () => {
-    round.takeTurn('object');
-    round.takeTurn('function');
+    round.takeTurn('green');
+    round.takeTurn('Danny');
     expect(round.turns).to.equal(2);
   });
 
   it('should store incorrect guesses', () => {
-    round.takeTurn('object');
-    round.takeTurn('function');
-    round.takeTurn('accessor method');
+    round.takeTurn('green');
+    round.takeTurn('Jake');
+    round.takeTurn('Goose');
     expect(round.incorrectGuesses).to.eql([card2, card3]);
   });
 
   it('should be able to calculate the win percentage', () => {
-    round.takeTurn('object');
-    round.takeTurn('function');
+    round.takeTurn('green');
+    round.takeTurn('Goose');
     expect(round.calculatePercentCorrect()).to.equal(50);
   });
 
   it('should be able to convert to a review round', () => {
-    expect(round).to.respondTo('convertToReview')
-  })
+    expect(round).to.respondTo('convertToReview');
+  });
 });
