@@ -20,10 +20,8 @@ class Game {
   }
 
   setUp() {
-    const cards = []
-    prototypeQuestions.forEach((card) => {
-      const newCard = new Card(card.id, card.question, card.answers, card.correctAnswer)
-      cards.push(newCard)
+    const cards = prototypeQuestions.map((card) => {
+      return new Card(card.id, card.question, card.answers, card.correctAnswer)
     })
     const deck = new Deck(cards)
     this.currentRound = new Round(deck)
