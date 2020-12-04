@@ -6,7 +6,7 @@ const Card = require('../src/Card');
 describe('Card', () => {
 
   beforeEach(() => {
-    return card = new Card(1, 'What allows you to define a set of related information using key-value pairs?', ['object', 'array', 'function'], 'object');
+    return card = new Card(1, 'What is my favorite color?', ['blue', 'orange', 'green'], 'green');
   });
 
   it('should be a function', () => {
@@ -18,14 +18,14 @@ describe('Card', () => {
   });
 
   it('should store a question', () => {
-    expect(card.question).to.equal('What allows you to define a set of related information using key-value pairs?');
+    expect(card.question).to.equal('What is my favorite color?');
   });
 
   it('should store a list of possible answers', () => {
-    expect(card.answers).to.deep.equal(['object', 'array', 'function']);
+    expect(card.answers).to.deep.equal(['blue', 'orange', 'green']);
   });
 
   it('should store the correct answer', () => {
-    expect(card.correctAnswer).to.equal('object');
+    expect(card.correctAnswer).to.equal('green');
   });
 });
