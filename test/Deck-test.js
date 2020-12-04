@@ -28,7 +28,7 @@ describe('Deck', () => {
   });
 
   it('should store cards', () => {
-    expect(deck.cards).to.eql([card1, card2, card3])
+    expect(deck.cards).to.eql([card1, card2, card3]);
   });
 
   it('should be able to return how many cards it has', () => {

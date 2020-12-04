@@ -69,6 +69,6 @@ describe('Round', () => {
   });
 
   it('should be able to convert to a review round', () => {
-    expect(round).to.respondTo('convertToReview')
-  })
+    expect(round).to.respondTo('convertToReview');
+  });
 });
